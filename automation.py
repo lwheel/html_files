@@ -8,6 +8,8 @@ df = pd.read_excel("/Users/lilywheeler/Desktop/students.xlsx", engine="openpyxl"
 output_directory = "files"
 os.makedirs(output_directory, exist_ok=True)
 
+df['Rank'] = df.index
+
 # Iterate over each row in the DataFrame
 for row_number, row in df.iterrows():
     # Extract the relevant information for the current row
@@ -20,6 +22,8 @@ for row_number, row in df.iterrows():
     q5 = row['Q_5']
     total = row['Total ']
     percentage = row['Percentage']
+    rank = row['Rank'] - 1
+    medal = row['Award']
 
     # Generate the XML content for the student's webpage
     xml_content = f'''<?xml version="1.0" encoding="UTF-8"?>
@@ -190,7 +194,7 @@ table {{
     
     th, td {{
         border: 1px solid black;
-        padding: 8px;
+        padding: 4px;
         text-align: center;
     }}
     
@@ -262,8 +266,8 @@ table {{
                     <td align="center" style="display: none;"></td>
                     <td align="right">{total}</td>
                     <td align="right">{round(percentage)}%</td>
-                    <td align="right">5</td>
-                    <td>Silver medal</td>
+                    <td align="right">{rank}</td>
+                    <td>{medal} medal</td>
                 </tr>
             </tbody>
         </table>
