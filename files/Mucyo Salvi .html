@@ -159,13 +159,37 @@
            font-size: 50px;
          }
        }
-       th,
-        td {
-      border: 2px solid black;
-    font-size: 14px;
-      margin: 10px;
-      padding: 4px;
+table {
+        border-collapse: collapse;
+        width: 100%;
     }
+    
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    
+    .highlightDown {
+        border-bottom: 2px solid black;
+    }
+    
+    .imp {
+        font-weight: bold;
+    }
+</style>
+You can place this <style> section either within the <head> section of your HTML or in an external CSS file that you link to. Once you add these styles, the lines should appear in your chart.
+
+
+
+
+
+
+
    
     </style>
 </head>
