@@ -154,7 +154,7 @@ for row_number, row in df.iterrows():
        h1 {{
          font-family: "Poppins", sans-serif;
          font-size: 30px;
-         font-weigh[t: 700;
+         font-weight: 700;
          color: #000000;
          margin-bottom: 2rem;
        }}
@@ -205,16 +205,6 @@ table {{
     .imp {{
         font-weight: bold;
     }}
-</style>
-You can place this <style> section either within the <head> section of your HTML or in an external CSS file that you link to. Once you add these styles, the lines should appear in your chart.
-
-
-
-
-
-
-
-   
     </style>
 </head>
 <body>
