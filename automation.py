@@ -194,7 +194,7 @@ table {{
     
     th, td {{
         border: 1px solid black;
-        padding: 4px;
+        padding: 2px;
         text-align: center;
     }}
     
