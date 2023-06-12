@@ -189,7 +189,7 @@ for row_number, row in df.iterrows():
        }}
 table {{
         border-collapse: collapse;
-        width: 100%;
+        width: 50%;
     }}
     
     th, td {{
