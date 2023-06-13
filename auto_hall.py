@@ -235,7 +235,7 @@ tr:nth-child(even) {{
                 <th rowspan="2"><a href="hall.html">P4</a></th>
                 <th rowspan="2"><a href="hall.html">P5</a></th>
                 <th rowspan="2" style="display: none;"></th>
-                <th colspan="2" rowspan="2"><a href="hall.html">Total</a></th>
+                <th rowspan="2"><a href="hall.html">Total</a></th>
                 <th rowspan="2">Rank</th>
                 <th rowspan="2"><a href="hall.html">Award</a></th>
             </tr>
