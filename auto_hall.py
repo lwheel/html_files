@@ -16,7 +16,6 @@ df = pd.read_excel("/Users/lilywheeler/Desktop/students.xlsx", engine="openpyxl"
 output_directory = "docs"
 os.makedirs(output_directory, exist_ok=True)
 
-df['Rank'] = df.index
 
 # Start building the HTML content
 html_content = f'''<?xml version="1.0" encoding="UTF-8"?>
@@ -254,7 +253,7 @@ for row_number, row in df.iterrows():
     q4 = row['Q_4']
     q5 = row['Q_5']
     total = row['Total ']
-    rank = row['Rank'] - 1
+    rank = row['Rank']
     medal = row['Award']
 
     # Add a table row for each contestant
@@ -276,24 +275,24 @@ for row_number, row in df.iterrows():
 
 
 
-    # Complete the HTML content
-    html_content += '''
-            </tbody>
-        </table>
-    </div>
-       <footer>
-            <b>E-mail:</b>
+        # Complete the HTML content
+html_content += '''
+ </tbody>
+ </table>
+ </div>
+    <footer>
+        <b>E-mail:</b>
             <a href="mailto:">__</a>
-            &nbsp; &nbsp;
+                &nbsp; &nbsp;
             <br>  
             <b>Webmaster:</b>
             <a href="mailto:ea@globtalent.org">ea@globtalent.org</a>
     </footer>
-    </body>
-    </html>
+</body>
+</html>
 '''
 
     # Save the XML content to a file in the output directory
-    output_filename = os.path.join(output_directory, f"hall.html")
-    with open(output_filename, "w") as file:
-        file.write(html_content)
+output_filename = os.path.join(output_directory, f"hall.html")
+with open(output_filename, "w") as file:
+    file.write(html_content)
