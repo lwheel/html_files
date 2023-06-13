@@ -1,7 +1,6 @@
 import os
 import pandas as pd
 
-
 general_df = pd.read_excel("/Users/lilywheeler/Desktop/main_info.xlsx", engine="openpyxl")
 
 for row_number, row in general_df.iterrows():
@@ -11,28 +10,24 @@ for row_number, row in general_df.iterrows():
     acro = row['acronym']
 
 # Read the Excel file
-df = pd.read_excel("/Users/lilywheeler/Desktop/students.xlsx", engine="openpyxl")
+df = pd.read_excel("/Users/lilywheeler/Desktop/countries.xlsx", engine="openpyxl")
 
 # Create the output directory if it doesn't exist
 output_directory = "files"
 os.makedirs(output_directory, exist_ok=True)
 
-df['Rank'] = df.index
 
 # Iterate over each row in the DataFrame
 for row_number, row in df.iterrows():
     # Extract the relevant information for the current row
-    student_name = row['Student '].title()  # Capitalize the first letter of each word
-    country = row['Country ']
-    q1 = row['Q_1']
-    q2 = row['Q_2']
-    q3 = row['Q_3']
-    q4 = row['Q_4']
-    q5 = row['Q_5']
-    total = row['Total ']
-    percentage = row['Percentage']
-    rank = row['Rank'] - 1
-    medal = row['Award']
+    country_name = row['Country'].title()  # Capitalize the first letter of each word
+    total_part = row['Number of Participants']
+    men = row['Number of Men']
+    women = row['Number of Women']
+    gold_medal = row['Gold Medals']
+    silver_medal = row['Silver Medals']
+    bronze_medal = row['Bronze Medals']
+    rank = row['Rank']
 
     # Generate the XML content for the student's webpage
     xml_content = f'''<?xml version="1.0" encoding="UTF-8"?>
@@ -221,83 +216,78 @@ table {{
     </style>
 </head>
 <body>
-    <div id="header">
+     <div id="header">
         <div id="sub">
-            <div class="centered-image top-left-corner">
-                <a href="index.html">
-                    <img src="{logo}" alt="EAMO" style="width: 100px; height: 77px;" />
-                </a>
-            </div>
+          <div class="centered-image top-left-corner">
+            <a href="index.html">
+              <img src="{logo}" alt="EAMO" style="width: 100px; height: 77px;">
+            </a>
+          </div>
         </div>
-
+    
         <div id="h1">
-            <h1 class="centered-heading">
-                <a href="index.html">{site_name}</a>
-            </h1>
+          <h1 class="centered-heading">
+            <a href="index.html">{site_name}</a>
+          </h1>
         </div>
         <div id="menu">
-            <a href="about.html">About {acro}</a> &bull;
-            <a href="countries.html">Countries</a> &bull;
-            <a href="results.html">Results</a> &bull;
-            <a href="problems.html">Problems</a> &bull;
-            <a href="links.html">Links and Resources</a>
+          <a href="about.html">About {acro}</a> &bull;
+          <a href="countries.html">Countries</a> &bull;
+          <a href="results.html">Results</a> &bull;
+          <a href="problems.html">Problems</a> &bull;
+          <a href="links.html">Links and Resources</a>
         </div>
-    </div>
-
+      </div><hr>
     <div id="main">
-        <h2>{student_name}</h2>
+        
+        <h2>{country_name}</h2>
+        <h3 class="hideprn"><a id="ctl00_CPH_Main_HyperLinkTeam" href="{country_name}_results.html">Team results</a> &bull;
+        <a id="ctl00_CPH_Main_HyperLinkIndividual" href="{country_name}_hall.html">Individual results</a> 
+
+
 
         <table>
             <thead>
-                <tr>
-                    <th rowspan="2" class="highlightDown"><a>Year</a></th>
-                    <th rowspan="2"><a>Country</a></th>
-                    <th rowspan="2"><a>P1</a></th>
-                    <th rowspan="2"><a>P2</a></th>
-                    <th rowspan="2"><a>P3</a></th>
-                    <th rowspan="2"><a>P4</a></th>
-                    <th rowspan="2"><a>P5</a></th>
-                    <th rowspan="2" style="display: none;"></th>
-                    <th colspan="2" rowspan="2"><a>Total</a></th>
-                    <th rowspan="2">Rank</th>
-                    <th rowspan="2"><a>Award</a></th>
-                </tr>
+              <tr>
+                <th rowspan="2" class="highlightDown"><a>Year</a></th>
+                <th colspan="3">Team size</th>
+                <th>Rank</th>
+                <th colspan="3"><a>Awards</a></th>
+              </tr>
+              <tr>
+                <th><a>All</a></th>
+                <th title="Male contestants"><a>M</a></th>
+                <th title="Female contestants"><a>F</a></th>
+                <th><a  title="Absolute ranking">Abs.</a></th>
+                <th title="Gold medal">G</th>
+                <th title="Silver medal">S</th>
+                <th title="Bronze medal">B</th>
+              </tr>
             </thead>
             <tbody>
-                <tr class="imp">
-                    <td align="center"><a>2023</a></td>
-                    <td><a href="{country.lower()}.html">{country}</a></td>
-                    <td align="center">{q1}</td>
-                    <td align="center">{q2}</td>
-                    <td align="center">{q3}</td>
-                    <td align="center">{q4}</td>
-                    <td align="center">{q5}</td>
-                    <td align="center" style="display: none;"></td>
-                    <td align="right">{total}</td>
-                    <td align="right">{round(percentage)}%</td>
-                    <td align="right">{rank}</td>
-                    <td>{medal} medal</td>
-                </tr>
+              <tr>
+                <td align="center"><a">2023</a></td>
+                <td align="right">{total_part}</td>
+                <td align="right">{men}</td>
+                <td align="right" class="doubleRightLine">{women}</td>
+                <td align="right">{rank}</td>
+                <td align="center">{gold_medal}</td>
+                <td align="center">{silver_medal}</td>
+                <td align="center">{bronze_medal}</td>
+              </tr>
             </tbody>
-        </table>
+          </table>
 
-        <p>Results may not be complete and may include mistakes.
-        Please send relevant information to the webmaster: <a id="ctl00_CPH_Main_HL1" href="mailto:ea@globtalent.org">ea@globtalent.org</a>.</p>
+
+
+
+
     </div>
 
-      <footer>
-    <b>E-mail:</b>
-    <a href="mailto:">__</a>
-    &nbsp; &nbsp;
-    <br>  
-    <b>Webmaster:</b>
-    <a href="mailto:ea@globtalent.org">ea@globtalent.org</a>
-  </footer>
-</body>
 </html>
 '''
 
     # Save the XML content to a file in the output directory
-    output_filename = os.path.join(output_directory, f"{student_name}.html")
+    output_filename = os.path.join(output_directory, f"{country_name}_results.html")
     with open(output_filename, "w") as file:
         file.write(xml_content)
