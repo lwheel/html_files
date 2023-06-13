@@ -220,7 +220,6 @@ table {{
         </div>
         <div id="menu">
           <a href="about.html">About {acro}</a> &bull;
-          <a href="countries.html">Countries</a> &bull;
           <a href="results.html">Results</a> &bull;
           <a href="problems.html">Problems</a> &bull;
           <a href="links.html">Links and Resources</a>

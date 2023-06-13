@@ -220,31 +220,6 @@ table {{
         </div>
         <div id="menu">
           <a href="about.html">About EAMO</a> &bull;
-          <a href="countries.html">Countries</a> &bull;
-          <a href="results.html">Results</a> &bull;
-          <a href="problems.html">Problems</a> &bull;
-          <a href="links.html">Links and Resources</a>
-        </div>
-      </div><hr>
-  </head>
-  <body>
-    <div id="header">
-        <div id="sub">
-          <div class="centered-image top-left-corner">
-            <a href="index.html">
-              <img src="{logo}" alt="EAMO" style="width: 100px; height: 77px;">
-            </a>
-          </div>
-        </div>
-    
-        <div id="h1">
-          <h1 class="centered-heading">
-            <a href="index.html">{site_name}</a>
-          </h1>
-        </div>
-        <div id="menu">
-          <a href="about.html">About {acro}</a> &bull;
-          <a href="countries.html">Countries</a> &bull;
           <a href="results.html">Results</a> &bull;
           <a href="problems.html">Problems</a> &bull;
           <a href="links.html">Links and Resources</a>
