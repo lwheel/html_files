@@ -115,7 +115,7 @@ for row_number, row in df.iterrows():
        }}
    
        footer {{
-      background-image: url('https://lwheel.github.io/MathOlympiad/repeat1.png');
+      background-image: url('https://lwheel.github.io/FILESMO/repeat1.png');
       background-size: contain;
       background-repeat: repeat;
       color: rgb(0, 0, 0);

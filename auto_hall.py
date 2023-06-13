@@ -97,7 +97,7 @@ html_content = f'''<?xml version="1.0" encoding="UTF-8"?>
    }}
  
    footer {{
-  background-image: url('https://lwheel.github.io/MathOlympiad/repeat1.png');
+  background-image: url('https://lwheel.github.io/FILESMO/repeat1.png');
   background-size: contain;
   background-repeat: repeat;
   color: rgb(0, 0, 0);
