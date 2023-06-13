@@ -5,7 +5,7 @@ import pandas as pd
 df = pd.read_excel("/Users/lilywheeler/Desktop/main_info.xlsx", engine="openpyxl")
 
 # Create the output directory if it doesn't exist
-output_directory = "files"
+output_directory = "docs"
 os.makedirs(output_directory, exist_ok=True)
 
 
