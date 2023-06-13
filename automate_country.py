@@ -20,7 +20,6 @@ os.makedirs(output_directory, exist_ok=True)
 # Iterate over each row in the DataFrame
 for row_number, row in df.iterrows():
     # Extract the relevant information for the current row
-    country_name = row['Country'].title()  # Capitalize the first letter of each word
     total_part = row['Number of Participants']
     men = row['Number of Men']
     women = row['Number of Women']
@@ -232,7 +231,6 @@ table {{
         </div>
         <div id="menu">
           <a href="about.html">About {acro}</a> &bull;
-          <a href="countries.html">Countries</a> &bull;
           <a href="results.html">Results</a> &bull;
           <a href="problems.html">Problems</a> &bull;
           <a href="links.html">Links and Resources</a>
@@ -240,9 +238,9 @@ table {{
       </div><hr>
     <div id="main">
         
-        <h2>{country_name}</h2>
-        <h3 class="hideprn"><a id="ctl00_CPH_Main_HyperLinkTeam" href="{country_name}_results.html">Team results</a> &bull;
-        <a id="ctl00_CPH_Main_HyperLinkIndividual" href="{country_name}_hall.html">Individual results</a> 
+        <h2>Team Results</h2>
+        <h3 class="hideprn"><a id="ctl00_CPH_Main_HyperLinkTeam" href="team_results.html">Team results</a> &bull;
+        <a id="ctl00_CPH_Main_HyperLinkIndividual" href="hall.html">Individual results</a> 
 
 
 
@@ -288,6 +286,6 @@ table {{
 '''
 
     # Save the XML content to a file in the output directory
-    output_filename = os.path.join(output_directory, f"{country_name}_results.html")
+    output_filename = os.path.join(output_directory, f"team_results.html")
     with open(output_filename, "w") as file:
         file.write(xml_content)

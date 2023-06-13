@@ -23,7 +23,6 @@ df['Rank'] = df.index
 for row_number, row in df.iterrows():
     # Extract the relevant information for the current row
     student_name = row['Student '].title()  # Capitalize the first letter of each word
-    country = row['Country ']
     q1 = row['Q_1']
     q2 = row['Q_2']
     q3 = row['Q_3']
@@ -237,7 +236,6 @@ table {{
         </div>
         <div id="menu">
             <a href="about.html">About {acro}</a> &bull;
-            <a href="countries.html">Countries</a> &bull;
             <a href="results.html">Results</a> &bull;
             <a href="problems.html">Problems</a> &bull;
             <a href="links.html">Links and Resources</a>
@@ -251,7 +249,6 @@ table {{
             <thead>
                 <tr>
                     <th rowspan="2" class="highlightDown"><a>Year</a></th>
-                    <th rowspan="2"><a>Country</a></th>
                     <th rowspan="2"><a>P1</a></th>
                     <th rowspan="2"><a>P2</a></th>
                     <th rowspan="2"><a>P3</a></th>
@@ -266,7 +263,6 @@ table {{
             <tbody>
                 <tr class="imp">
                     <td align="center"><a>2023</a></td>
-                    <td><a href="{country.lower()}.html">{country}</a></td>
                     <td align="center">{q1}</td>
                     <td align="center">{q2}</td>
                     <td align="center">{q3}</td>

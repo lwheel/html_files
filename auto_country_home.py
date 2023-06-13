@@ -1,8 +1,16 @@
 import os
 import pandas as pd
 
+general_df = pd.read_excel("/Users/lilywheeler/Desktop/main_info.xlsx", engine="openpyxl")
+
+for row_number, row in general_df.iterrows():
+    # Extract the relevant information for the current row
+    site_name = row['Site Name'].title()  # Capitalize the first letter of each word
+    logo = row['Logo Link']
+    acro = row['acronym']
+
 # Read the Excel file
-df = pd.read_excel("/Users/lilywheeler/Desktop/main_info.xlsx", engine="openpyxl")
+df = pd.read_excel("/Users/lilywheeler/Desktop/countries.xlsx", engine="openpyxl")
 
 # Create the output directory if it doesn't exist
 output_directory = "files"
@@ -12,10 +20,13 @@ os.makedirs(output_directory, exist_ok=True)
 # Iterate over each row in the DataFrame
 for row_number, row in df.iterrows():
     # Extract the relevant information for the current row
-    site_name = row['Site Name'].title()  # Capitalize the first letter of each word
-    logo = row['Logo Link']
-    acro = row['acronym']
-    intro = row['Intro-paragraph']
+    total_part = row['Number of Participants']
+    men = row['Number of Men']
+    women = row['Number of Women']
+    gold_medal = row['Gold Medals']
+    silver_medal = row['Silver Medals']
+    bronze_medal = row['Bronze Medals']
+    rank = row['Rank']
 
     # Generate the XML content for the student's webpage
     xml_content = f'''<?xml version="1.0" encoding="UTF-8"?>
@@ -203,43 +214,44 @@ table {{
     }}
     </style>
 </head>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 <body>
-  <div id="header">
-    <div id="sub">
-      <div class="centered-image top-left-corner">
-        <a href="index.html">
-          <img src="{logo}" alt="EAMO" style="width: 100px; height: 77px;">
-        </a>
-      </div>
-    </div>
-
-    <div id="h1">
-      <h1 class="centered-heading">
-        <a href="#">{site_name}</a>
-      </h1>
-    </div>
-    <div id="menu">
-      <a href="about.html">About {acro}</a> &bull;
-      <a href="results.html">Results</a> &bull;
-      <a href="problems.html">Problems</a> &bull;
-      <a href="links.html">Links and Resources</a>
-    </div>
-  </div>
-  <hr>
-  <div class="container">
-    <div id="main">
-      <div class="content">
-        <div class="intro" style="margin-left: 50px; margin-right: 50px;">
-          <p>
-           {intro}
-          </p>
+     <div id="header">
+        <div id="sub">
+          <div class="centered-image top-left-corner">
+            <a href="index.html">
+              <img src="{logo}" alt="EAMO" style="width: 100px; height: 77px;">
+            </a>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
+    
+        <div id="h1">
+          <h1 class="centered-heading">
+            <a href="index.html">{site_name}</a>
+          </h1>
+        </div>
+        <div id="menu">
+          <a href="about.html">About {acro}</a> &bull;
+          <a href="results.html">Results</a> &bull;
+          <a href="problems.html">Problems</a> &bull;
+          <a href="links.html">Links and Resources</a>
+        </div>
+      </div><hr>
+    <div id="main">
+<h2>Results</h2>
+<h3 class="hideprn"><a id="ctl00_CPH_Main_HyperLinkTeam" href="team_results.html">Team results</a> &bull;
+<a id="ctl00_CPH_Main_HyperLinkIndividual" href="hall.html">Individual results</a> 
+
+<dl class="normal">
+
+
+
+</dd><dd>Number of participations: {total_part}.</dd><dd>Gold medals: {gold_medal}. Silver medals: {silver_medal}. Bronze medals: {bronze_medal}.</dd>
+</dl>
+
+
+
+
+
 
   <footer>
     <b>E-mail:</b>
@@ -249,12 +261,11 @@ table {{
     <b>Webmaster:</b>
     <a href="mailto:ea@globtalent.org">ea@globtalent.org</a>
   </footer>
-
 </body>
 </html>
 '''
 
     # Save the XML content to a file in the output directory
-    output_filename = os.path.join(output_directory, f"index.html")
+    output_filename = os.path.join(output_directory, f"results.html")
     with open(output_filename, "w") as file:
         file.write(xml_content)
